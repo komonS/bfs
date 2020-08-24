@@ -1,0 +1,9 @@
+.dropdown-menu{
+    position: fixed;
+    right: 0;
+    width: 200px;
+}
+.img-profile{
+    width:30px;
+    border-radius: 50%;
+}
