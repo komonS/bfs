@@ -9,6 +9,7 @@ function MyBike() {
     const { url } = useContext(UrlContext)
     const [bike, setBike] = useState([])
     const [delst, setDelst] = useState(false)
+    const [bikeImage, setBikeImage] = useState([])
     const getBike = async () => {
         let res = await axios.get(url.api + 'api/bike/bike', {
             params: {
@@ -49,6 +50,15 @@ function MyBike() {
         setBike(res.data)
     }
 
+    const getImageBike = async () => {
+        let res = await axios.get(url.api + 'api/bike/bikeimg', {
+            params: {
+                userID: localStorage.userID
+            }
+        })
+        setBikeImage(res.data)
+    }
+
     const DelBikeAlert = () => {
         return <div className="alert alert-success alert-dismissible">
             <button type="button" className="close" onClick={() => setDelst(false)} >&times;</button>
@@ -58,6 +68,7 @@ function MyBike() {
 
     useEffect(() => {
         getBike()
+        getImageBike()
     }, [])
     return (
         <div className="bike">
@@ -130,7 +141,7 @@ function MyBike() {
                                             </label>
                                         </td>
                                         <td className="text-center">
-                                            
+
                                             <button className="btn btn-danger btn-sm" value={item.bikeID} onClick={delbike}>Delete</button>
                                         </td>
                                     </tr>
@@ -138,6 +149,15 @@ function MyBike() {
                             }
                         </tbody>
                     </table>
+                </div>
+                <div className="row">
+                    {bikeImage.map((item, index) => (
+                        <div key={index} className="col-md-4">
+                            <div class="card">
+                                <img src={url.api + 'picture/bike/' + item.bmName} className="card-img-top" />
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
             </div>

@@ -1,0 +1,45 @@
+.wall{
+    /*border:solid 1px gray;
+    border-radius: 5px;*/
+    padding: 15px;
+}
+
+.post{
+    margin: 10px;
+    padding: 10px;
+    border: solid 1px gray;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.post-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.post-header{
+    background-color: #cccccc;
+    margin: 15px;
+    padding: 10px;
+}
+
+.post-left{
+    float: left;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.post-detail{
+    padding-left: 20px;
+}
+
+.post-commet{
+    padding-left: 50px;
+}
+.post-content{
+    border: solid 1px #F5F5F5;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F5F5F5;
+}

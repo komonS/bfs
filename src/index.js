@@ -8,6 +8,7 @@ import { LoginProvider } from './store/LoginProvider'
 import { UserProvider } from './store/UserProvider'
 import { UserinfoProvider } from './store/UserinfoProvider'
 import { UrlProvider } from './store/UrlProvider'
+import { MenuProvider } from './store/MenuProvider'
 ReactDOM.render(
   <React.StrictMode>
     <Router>
@@ -15,7 +16,9 @@ ReactDOM.render(
         <LoginProvider>
           <UserProvider>
             <UrlProvider>
+              <MenuProvider>
               <App />
+              </MenuProvider>
             </UrlProvider>
           </UserProvider>
         </LoginProvider>

@@ -9,7 +9,7 @@ function Profile() {
     const { user, setUser } = useContext(UserContext)
     const [file, setFile] = useState()
 
-    console.log(file)
+    //console.log(file)
     const onSubmitdata = async (event) => {
         event.preventDefault()
         let res = await axios.get(url.api+'/api/user/updateprofile',{
@@ -21,25 +21,43 @@ function Profile() {
             }
         })
         
-        if(res.data.status == 'success'){
+        if(res.data.status === 'success'){
             alert('Update data is completed')
         }else{
             alert(res.data.status + '! '+res.data.detail)
         }
     }
 
-    const uploadFile = async () => {
-        var formData = new FormData();
-        var imagefile = file[0];
-        
-        formData.append("image", imagefile);
-        let res = await axios.get(url.api+'api/user/uploadfil', formData, {
+    const uploadFile = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        const imagefile = document.querySelector('#filUpload');
+        formData.append("filUpload", imagefile.files[0]);
+        let res = await axios.post(url.api+'service/upload.php', formData, {
             headers: {
             'Content-Type': 'multipart/form-data'
+            },
+            params:{
+                userID:localStorage.userID
             }
         })
         console.log(res.data)
+        if(res.data.status === 'success'){
+            onGetUserInfo(localStorage.userID)
+        }else{
+            alert(res.data.status+'! <br/>'+res.data.detail)
+        }
         
+    }
+
+    const onGetUserInfo = async (userID) => {
+        let res = await axios.get('http://localhost/biker/api/user/memberinfo', {
+            params: {
+                userID: userID
+            }
+        })
+        console.log(res.data[0])
+        setUser(res.data)
     }
 
     useEffect(() => {
@@ -53,11 +71,13 @@ function Profile() {
                 </div>
                 <div className="form-inline">
                     <div>
-                        <img src={url.api+'picture/'+user.image} className="mx-auto Profile-Image" />
+                        <img src={url.api+'picture/profile/'+user.image} className="mx-auto Profile-Image" />
                     </div>
                     <div>
-                        <input type="file" className="form-control Profile-Image-Input" onChange={(e)=>setFile(e.target.files)} />
-                        <button className="btn btn-secondary" onClick={uploadFile}>Upload</button>
+                        <form>
+                            <input type="file" className="form-control Profile-Image-Input" id="filUpload" name="filUpload" onChange={(e)=>setFile(e.target.files[0])} />
+                            <button className="btn btn-secondary" type="submit" onClick={uploadFile}>Upload</button>
+                        </form>
                     </div>
                 </div>
                 <div className="Profile-Info">

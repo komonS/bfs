@@ -12,6 +12,7 @@ function EditBike() {
     const [model, setModel] = useState()
     const [year, setYear] = useState()
     const [color, setColor] = useState()
+    const [bikeImage, setBikeImage] = useState([])
     const bikeData = async () => {
         let res = await axios.get(url.api + 'api/bike/bikeone', {
             params: {
@@ -27,6 +28,37 @@ function EditBike() {
         setYear(res.data[0].bikeYear)
 
 
+    }
+
+    const uploadFile = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        const imagefile = document.querySelector('#filUpload');
+        formData.append("filUpload", imagefile.files[0]);
+        let res = await axios.post(url.api + 'service/upload.php', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+            params: {
+                bike: bike
+            }
+        })
+        console.log(res.data)
+        if (res.data.status === 'success') {
+            getImageBike(bike)
+        } else {
+            alert(res.data.status + '! <br/>' + res.data.detail)
+        }
+
+    }
+
+    const getImageBike = async () => {
+        let res = await axios.get(url.api + 'api/bike/bikeimg', {
+            params: {
+                bikeID: bike
+            }
+        })
+        setBikeImage(res.data)
     }
 
     const onSave = async (event) => {
@@ -53,46 +85,62 @@ function EditBike() {
 
     useEffect(() => {
         bikeData()
-    }, [])
+        getImageBike()
+    }, [bike])
     return (
         <div>
             <h4 className="text-center bike-head">Edit Bike</h4>
-            <div>
-                <form onSubmit={onSave}>
-                    <div className="form-group">
-                        <label>Bike Name</label>
-                        <input className="form-control" type="text" defaultValue={name} onChange={e => setName(e.target.value)} />
+            <div className="row">
+                <div className="col-md-6">
+                    <form onSubmit={onSave}>
+                        <div className="form-group">
+                            <label>Bike Name</label>
+                            <input className="form-control" type="text" defaultValue={name} onChange={e => setName(e.target.value)} />
+                        </div>
+                        <div className="form-group">
+                            <label>Brand</label>
+                            <input className="form-control" type="text" defaultValue={brand} onChange={e => setBrand(e.target.value)} />
+                        </div>
+                        <div className="form-group">
+                            <label>Model</label>
+                            <input className="form-control" type="text" defaultValue={model} onChange={e => setModel(e.target.value)} />
+                        </div>
+                        <div className="form-group">
+                            <label>Year</label>
+                            <input className="form-control" type="text" defaultValue={year} onChange={e => setYear(e.target.value)} />
+                        </div>
+                        <div className="form-group">
+                            <label>Color</label>
+                            <input className="form-control" type="text" defaultValue={color} onChange={e => setColor(e.target.value)} />
+                        </div>
+                        <div className="text-center">
+                            <button type="submit" className="btn btn-secondary">Save</button>
+                        </div>
+                    </form>
+                </div>
+                <div className="bike-conten col-md-6">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <form onSubmit={uploadFile}>
+                                <label>upload bike image</label>
+                                <div className="form-inline ">
+                                    <input type="file" id="filUpload" name="filUpload" className="form-control" />
+                                    <button type="submit" className="btn btn-secondary btn-upload">Upload</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div className="form-group">
-                        <label>Brand</label>
-                        <input className="form-control" type="text" defaultValue={brand} onChange={e => setBrand(e.target.value)} />
+                    <div className="row bike-img-content">
+                        {bikeImage.map((item, index) => (
+                            <div key={index} className="col-md-6">
+                                <div class="card">
+                                    <img src={url.api+'picture/bike/'+item.bmName} className="card-img-top" />
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                    <div className="form-group">
-                        <label>Model</label>
-                        <input className="form-control" type="text" defaultValue={model} onChange={e => setModel(e.target.value)} />
-                    </div>
-                    <div className="form-group">
-                        <label>Year</label>
-                        <input className="form-control" type="text" defaultValue={year} onChange={e => setYear(e.target.value)} />
-                    </div>
-                    <div className="form-group">
-                        <label>Color</label>
-                        <input className="form-control" type="text" defaultValue={color} onChange={e => setColor(e.target.value)} />
-                    </div>
-                    <div className="text-center">
-                        <button type="submit" className="btn btn-secondary">Save</button>
-                    </div>
-                </form>
-            </div>
-            <div className="bike-conten">
-                <form>
-                    <label>upload bike image</label>
-                    <div className="form-inline ">
-                        <input type="file" className="form-control" />
-                        <button type="submit" className="btn btn-secondary btn-upload">Upload</button>
-                    </div>
-                </form>
 
+                </div>
             </div>
         </div>
     );

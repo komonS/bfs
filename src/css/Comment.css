@@ -1,0 +1,39 @@
+.comment{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+}
+
+.comment-detail{
+    padding-left: 10px;
+    padding-right: 10px;
+   
+}
+
+.comment-input{
+    margin: 10px;
+}
+
+.btn-comment{
+    margin-top: 5px;
+}
+
+.comment-detail-user-left{
+    float: left;
+}
+
+.comment-detail-user{
+    width: 100%;
+    padding: 10px;
+}
+
+.comment-detail-content{
+    margin-left: 50px;
+    margin-bottom: 5px;
+}
+.comment-centent{
+    border: solid 1px #F5F5F5;
+    background-color: #F5F5F5;
+    margin-bottom: 5px;
+}

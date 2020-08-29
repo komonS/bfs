@@ -1,0 +1,43 @@
+
+.side-bar {
+    width: 15vw;
+    background-color: #cccccc;
+    position: fixed;
+    left: 0;
+    /*top: 55px;*/
+    height: 100%;
+    padding-top: 20px;
+    overflow: auto;
+    /*padding-right: 10px;
+              padding-left: 10px;*/
+  }
+  .side-nav {
+    color: #fff;
+    display: block;
+    padding: 10px;
+  }
+  .side-nav:hover {
+    background-color: gray;
+  }
+  .side-nav a {
+    color: #fff;
+    display: block;
+  }
+  .side-nav a:link {
+    text-decoration: none;
+  }
+  .side-navII {
+    color: #fff;
+    display: block;
+    padding: 5px;
+  }
+  .side-navII:hover {
+    background-color: #cccccc;
+  }
+  .side-navII a {
+    color: #fff;
+    display: block;
+  }
+  .side-navII a:link {
+    text-decoration: none;
+  }

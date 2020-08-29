@@ -9,6 +9,8 @@
     padding: 15px;
     border:solid 5px;
     border-color: gray;
+    width: 200px;
+    height: 200px;
 }
 
 .Profile-Image-Input{

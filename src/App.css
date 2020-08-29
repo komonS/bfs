@@ -1,0 +1,13 @@
+.container-fluid {
+    height: 95vh;
+    padding-top: 10px;
+    position: fixed;
+    top: 50px;
+    overflow: auto;
+    margin-bottom: 20px;
+    /*background-color: #99FFFF;*/
+  }
+
+  .Menu{
+      
+  }

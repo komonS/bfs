@@ -7,3 +7,9 @@
     width:30px;
     border-radius: 50%;
 }
+
+.btn-menu{
+    margin-left: 5px;
+    margin-right: 5px;
+    border: solid 1px gray;
+}

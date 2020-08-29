@@ -1,0 +1,28 @@
+
+.friend-bar {
+    width: 15%;
+    background-color: #cccccc;
+    position: fixed;
+    right: 0;
+    /*top: 55px;*/
+    height: 100%;
+    padding-top: 20px;
+    overflow: auto;
+    /*padding-right: 10px;
+              padding-left: 10px;*/
+  }
+  .friend-nav {
+    color: #fff;
+    display: block;
+    padding: 10px;
+  }
+  .friend-nav:hover {
+    background-color: gray;
+  }
+  .friend-nav a {
+    color: #fff;
+    display: block;
+  }
+  .friend-nav a:link {
+    text-decoration: none;
+  }
