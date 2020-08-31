@@ -3,11 +3,13 @@ import { Link, useHistory } from "react-router-dom";
 import axios from 'axios'
 import '../../css/Friend.css'
 import { UrlContext } from '../../store/UrlProvider'
+import { FriendContext } from '../../store/FriendProvider'
 function Friend() {
     const { url } = useContext(UrlContext)
-    const [friend, setFriend] = useState([])
+    const { friend,setFriend } = useContext(FriendContext)
+    //const [friend, setFriend] = useState([])
     const getFriendData = async() => {
-        let res = await axios.get(url.api+'api/friend/firend',{
+        let res = await axios.get(url.api+'api/friend/friend',{
             params:{
                 userID:localStorage.userID
             }

@@ -7,7 +7,7 @@ function Sidebar() {
     <div className="side-bar">
       <ul className="nav flex-column">
         <li className="nav-item side-nav">
-          <Link to="/mybike" href="#"><i class="fas fa-motorcycle"></i> &nbsp;&nbsp;My Bike</Link>
+          <Link to="/mybike" href="#"><i className="fas fa-motorcycle"></i> &nbsp;&nbsp;My Bike</Link>
         </li>
       </ul>
     </div>

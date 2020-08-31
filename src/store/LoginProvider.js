@@ -8,7 +8,6 @@ const initialState = {
 }
 
 if(localStorage.userID != null){
-  console.log(localStorage.userID)
   initialState.login = true
 }
 

@@ -10,6 +10,7 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import { LoginContext } from './store/LoginProvider'
 import Sidebar from './component/layout/Sidebar'
 import Friend from './component/layout/Friend'
+import FriendProfile from './component/content/FriendProfile'
 import './App.css'
 import { MenuContext } from './store/MenuProvider'
 function App() {
@@ -52,12 +53,16 @@ function App() {
               <Route path="/login" >
                 <Login />
               </Route>
+              <Route path="/profile/friend/:memberID" >
+                <FriendProfile />
+              </Route>
               <Route path="/profile" >
                 <Profile />
               </Route>
               <Route path="/register" >
                 <Register />
               </Route>
+              
               <Route path="/" >
                 <Home />
               </Route>

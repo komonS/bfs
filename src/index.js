@@ -9,6 +9,7 @@ import { UserProvider } from './store/UserProvider'
 import { UserinfoProvider } from './store/UserinfoProvider'
 import { UrlProvider } from './store/UrlProvider'
 import { MenuProvider } from './store/MenuProvider'
+import { FriendProvider } from './store/FriendProvider'
 ReactDOM.render(
   <React.StrictMode>
     <Router>
@@ -17,7 +18,9 @@ ReactDOM.render(
           <UserProvider>
             <UrlProvider>
               <MenuProvider>
-              <App />
+                <FriendProvider>
+                  <App />
+                </FriendProvider>
               </MenuProvider>
             </UrlProvider>
           </UserProvider>

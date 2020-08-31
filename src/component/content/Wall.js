@@ -23,10 +23,14 @@ function Wall() {
           <div className="post-content">
             <div className="row post-header">
               <div className="post-lift">
-                <img src={url.api + 'picture/profile/' + item.picture} className="post-img" />
+                <Link to={"/profile/friend/" + item.userID}>
+                  <img src={url.api + 'picture/profile/' + item.picture} className="post-img" />
+                </Link>
               </div>
               <div className="post-lift">
-                {item.fname} {item.lname}
+                <Link className="link-profile" to={"/profile/friend/" + item.userID}>
+                  {item.fname} {item.lname}
+                </Link>
               </div>
             </div>
             <div className="post-detail">
@@ -34,7 +38,7 @@ function Wall() {
             </div>
           </div>
           <div className="post-commet">
-             <Comment id={item.postID} />
+            <Comment id={item.postID} />
           </div>
 
         </div>

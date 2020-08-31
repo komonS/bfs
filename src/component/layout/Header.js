@@ -62,7 +62,6 @@ function Header() {
                 userID: userID
             }
         })
-        console.log(res.data)
         setUser(res.data)
         
     }
@@ -79,8 +78,6 @@ function Header() {
         }else if(menu === 'Show'){
             setMenu('Hide')
         }
-        
-       console.log(menu)
     }
 
     return (

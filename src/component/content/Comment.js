@@ -49,13 +49,17 @@ function Comment(props) {
                     <div className="row comment-centent" key={index}>
                         <div className="comment-detail-user">
                             <div className="comment-detail-user-left">
-                                <img src={url.api + 'picture/profile/' + item.picture} className="post-img" />
+                                <Link className="link-profile" to={"/profile/friend/" + item.userID}>
+                                    <img src={url.api + 'picture/profile/' + item.picture} className="post-img" />
+                                </Link>
                             </div>
                             <div className="comment-detail-user-left">
-                                {item.fname} {item.lname}
+                                <Link className="link-profile" to={"/profile/friend/" + item.userID}>
+                                    {item.fname} {item.lname}
+                                </Link>
                             </div>
                         </div>
-                        <div  className="comment-detail-content">
+                        <div className="comment-detail-content">
                             {item.commentDetail}
                         </div>
                     </div>

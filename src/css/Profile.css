@@ -1,8 +1,8 @@
 .Profile{
     margin:10px;
     padding: 15px;
-    border:solid 1px;
-    border-color: gray;
+    border:solid 1px gray;
+    border-radius: 5px;
 }
 
 .Profile-Image{
