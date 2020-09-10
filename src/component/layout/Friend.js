@@ -27,7 +27,7 @@ function Friend() {
       <ul className="nav flex-column">
           {friend.map((item, index) => (
             <li key={index} className="nav-item friend-nav">
-                <Link to="" href="#">{item.fname} {item.lname}</Link>
+                <Link to={'/message/friend/'+item.friendID+'/'+item.flID} >{item.fname} {item.lname}</Link>
             </li>
           ))}
         

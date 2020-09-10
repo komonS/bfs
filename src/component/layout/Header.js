@@ -31,6 +31,11 @@ function Header() {
     
     const Logined = () => {
         return <ul className="navbar-nav">
+            <li className="nav-item">
+                <a href="#" className="nav-link">
+                <i className="fas fa-user-plus"></i>
+                </a>
+            </li>
         <li className="nav-item dropdown ">
             <a className="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                 <ImageProfile/> {user.fullname}

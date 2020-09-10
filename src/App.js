@@ -11,6 +11,7 @@ import { LoginContext } from './store/LoginProvider'
 import Sidebar from './component/layout/Sidebar'
 import Friend from './component/layout/Friend'
 import FriendProfile from './component/content/FriendProfile'
+import Message from './component/content/Message'
 import './App.css'
 import { MenuContext } from './store/MenuProvider'
 function App() {
@@ -62,7 +63,9 @@ function App() {
               <Route path="/register" >
                 <Register />
               </Route>
-              
+              <Route path="/message/friend/:memberID/:flID">
+                <Message />
+              </Route>
               <Route path="/" >
                 <Home />
               </Route>
